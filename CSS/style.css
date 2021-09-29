@@ -1,0 +1,313 @@
+:root { /*me permite definir variables, es muy práctico*/
+    --blanco: #ffffff;
+    --negro: #212121;
+    --primario: #ffc107;
+    --gris: #757575;
+    --secundario: #0097a0;
+    --grisclaro: rgb(210, 216, 213); 
+}
+
+/* 1 rem = 10 px */
+/*esto que viene a continuación, debo colocarlo siempre, 
+es para quitar el efecto caja que toma el elemento que al darle un width le suma el padding+ margin, 
+también es para tener los tamaños en control*/
+html {
+ font-size: 62,5%;
+ box-sizing: border-box;
+ scroll-snap-type: y mandatory;
+}
+
+*,*:before , *:after{
+box-sizing: inherit;
+}
+
+body {
+    font-size: 16px; /*tamaño de letra*/
+    font-family: 'Nunito', sans-serif; /*tipo de letra*/
+    background-image: linear-gradient(to right, var(--grisclaro) 0%,  var(--blanco) 100%); /*para poder dar color al fondo*/
+}
+
+.titulo{
+ text-align: center; 
+ color: var(--primario);
+ font-size: 3,8rem;
+ font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.titulo span{
+color: var(--gris);
+font-size: 1.8rem;
+}
+
+.contenedor {
+    /*width: 120rem o max-width: 120rem */ 
+  /* margin: 0 auto;*/
+  margin: 0 8rem; /*margenes, por lo general son 4 datos, 2, o 1, distancia entre el elemento y elemento próximo*/
+}
+
+.nav-bag {
+    background-color: var(--secundario); /*color de fondo, color sólido*/
+}
+
+.navegacionprincipal {
+    display:flex; /*esto me permite sin dudas cmbiar alineaciones en el código*/
+    flex-direction: column; /*para que aparezcan en columnas, una debajo de la otra*/
+   align-items: center; /*se usa para alinear cuando se usan columnas*/
+}
+/*esto se saca de ctrl+shift+p: user snippets: css.json*/
+
+@media (min-width: 780px) {        
+    .navegacionprincipal {
+     flex-direction: row; 
+     justify-content: space-between; /*para alinear en filas*/
+    }
+}
+
+.navegacionprincipal a {
+    text-decoration: none; /*quitar cosas a las letras que aparecen por default*/
+    color: var(--blanco);
+    padding: 1rem; /*el grosor del elemento*/ 
+    font-weight: 700; /*atributos a las letras*/
+}
+
+/*con hover doy atributos cuando paso el mouse por el elemento*/
+.navegacionprincipal a:hover {
+    color: var (var(--negro));
+    background-color: var(--primario);
+  
+}
+
+/*para insertar imagenes de fondo*/
+.ubicacion {
+     background-image: url(../IMG1/hero.jpg);
+     background-repeat: no-repeat;
+     background-size: cover; /**PARA QUE LA IMAGEN ABARQUE TODO EL ESPACIO DISPONIBLE**/
+     height: 450px;
+     text-align: center;
+     color: var(--blanco);
+     
+    /* padding: 20px; cuando colocas transparencias eliminas el padding*/
+     position: relative; /*el relative es para la transparencia*/
+     margin-bottom: 2rem;
+}
+
+/*esto es para la transparencia sobre la foto que aparece en el header*/
+.ubicacionhijo {
+    position: absolute;
+    background-color: rgba(0, 0, 0, .6);
+    background-color: rgb(0 0 0 / 60%);
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/*esto es para que aparezca el nombre al lado del símbolo de la ubicación*/
+.ubicacionhijo2 {
+    display:flex;
+    flex-direction: row;
+    align-items: flex-end;
+}
+
+
+h2{
+     font-size: 2.5rem;
+     font-weight: bold;
+     margin: 0.8rem auto;
+     text-align: center;
+
+    }
+
+h3{
+    font-size: 1,8rem;
+}
+
+/*para crear botones*/
+.boton {
+    background-color: var(--secundario);
+    margin-top: 2rem;
+    margin-right: auto;
+    margin-left:auto;
+    color: var(--blanco);
+    text-decoration:none;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+    padding: 1rem 2rem;
+    width: 75%;
+    border-radius: 0.5rem;
+    text-align: center;
+    border: none;
+}
+
+/*para que el ancho del botón se mantenga sin importar el tamaño de la pantalla*/
+@media (min-width: 768px) {
+    .boton {
+        width: auto;
+        }
+}     
+
+/*para crear un cuadro al rededor de textos
+.container {
+  margin: 300rem;
+}
+*/
+
+/*efecto sombra al cuadro que queremos crear*/
+.sombra {
+    -webkit-box-shadow: 0px 0px 35px -14px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 35px -14px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 35px -14px rgba(0,0,0,0.75);
+    background-color: var(--blanco);
+    padding: 1rem;
+    /**text-align: center; lo desactivé para alinear los 
+    campos a la derecha **/
+    width: 80% ;
+    margin: auto;
+    border-radius: 0.5rem;
+}
+
+.container .sombra{
+    justify-content: center; 
+
+  
+}
+
+
+/*esto nos permitirá ordenar la información en columnas*/
+/*  grid-template-columns: 33.33% 33.33% 33.33%;
+grid-template-rows: 33.33% 33.33% 33.33%;*/
+/*también se puede escribir grid-template-columns: 1fr 1fr 1fr*/
+/*y si quieres repetir el mismo valor, simplemente colocas grid-template-columns or rows: repeat(3, 1fr) o (3, 33.33%)*/
+/*el código anterior es igual al siguiente, primero van las rows y luego las columnas*/ 
+/*   grid: 33.33% 33.33% 33.33% / 33.33% 33.33% 33.33%; */
+
+@media (min-width: 768px) {
+    .servicios{
+        display: grid;
+        grid-template-columns:32% 32% 32%; /**no lo dejamos ocn 33.33% para que no se salga 
+        cuadro**/
+        column-gap: 1rem;   
+        justify-content: center;
+    }
+}
+
+/**para alinear los contenidos importantes**/
+
+.servicioindividual {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.servicioindividual h3{
+    color: var(--secundario);
+    font-weight: bold;
+
+}
+
+/**para agregar interlineado a los párrafos**/
+.servicios p{
+ line-height: 1.5;
+ text-align: justify;
+ 
+}
+
+/**para los iconos unicamente**/
+.iconos {
+  height: 8rem;
+  width: 8rem;
+  background-color: var(--primario);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.formulario h2{
+    text-align: center;
+
+    margin: 0, auto
+
+}
+/**el fieldset es ese recuadro que se crea, que se comenta con un 
+legend y te permite crear pues, un formulario**/
+
+fieldset {
+    border: none;
+    background-color: var(--gris);
+    width: min(30rem, 100%);
+    margin: auto;
+    padding-top: 0.5rem;
+    padding-bottom:2rem;
+    border-radius: 0.5rem;
+}
+      
+   .formulario legend{
+       color:var(--primario);
+       text-transform: uppercase;
+       font-weight: bold;
+       margin-bottom: 1rem;
+       text-align: center;
+       font-size: 1.2rem;
+       display: flex;
+       flex-direction: row;
+        justify-content: center;   }
+
+   .contenedorcampos {
+       margin-right: 0%;
+   }
+
+   .campos{
+        margin-bottom: 0.8rem;
+}
+
+    .campos label {
+        color: var(--blanco);
+        font-weight: bold;
+        margin-bottom: 0.4rem;
+        display: block; 
+     
+}
+
+.input {
+    width: 100%;
+    border: none;
+    border-radius: 0.2rem;
+    padding: 0.5rem;
+}
+
+.boton:hover {
+    cursor:pointer;
+}
+
+.campos input[type="submit"] {
+    width:100%;
+}
+
+
+    @media (min-width: 768px) {
+        .campos input[type="submit"] { 
+            display: flex;
+            margin-right: 0;
+            width: auto;
+        }
+     }
+
+     .titulo,
+     .servicios,
+     .formulario,
+     .foot {
+         scroll-snap-align: center;
+         scroll-snap-stop: always;
+     } 
+
+     p {
+         text-align: center;
+         line-height: 0.5;
+     }
+
